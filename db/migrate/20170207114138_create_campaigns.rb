@@ -4,6 +4,7 @@ class CreateCampaigns < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :uid
       t.integer :opens_count, default: 0
+      t.integer :url_clicks_count, default: 0
 
       t.timestamps
     end

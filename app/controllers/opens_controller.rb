@@ -8,11 +8,4 @@ class OpensController < ApplicationController
       type: "image/gif", disposition: "inline"
     )
   end
-
-
-  private
-
-  def find_campaign
-    @campaign = Campaign.find_by!(uid: params[:campaign_id])
-  end
 end
