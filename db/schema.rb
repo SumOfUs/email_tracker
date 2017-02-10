@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207114348) do
+ActiveRecord::Schema.define(version: 20170208153146) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
     t.string   "uid"
-    t.integer  "opens_count", default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "opens_count",      default: 0
+    t.integer  "url_clicks_count", default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "opens", force: :cascade do |t|
@@ -29,6 +30,18 @@ ActiveRecord::Schema.define(version: 20170207114348) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["campaign_id"], name: "index_opens_on_campaign_id"
+  end
+
+  create_table "url_clicks", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "first_clicked_at"
+    t.datetime "last_clicked_at"
+    t.string   "recipient_id"
+    t.integer  "clicks_count",     default: 0
+    t.integer  "campaign_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["campaign_id"], name: "index_url_clicks_on_campaign_id"
   end
 
 end
